@@ -3,7 +3,7 @@ export interface Chapter {
   name: string;
   transliteration: string;
   translation?: string;
-  type: "Meccan" | "Medinan";
+  type: "meccan" | "medinan";
   total_verses: number;
 }
 

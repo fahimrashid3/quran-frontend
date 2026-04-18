@@ -21,24 +21,24 @@ export default function Page() {
       </p>
 
       <div className="flex gap-4 flex-wrap justify-center">
-        <Button
-          as={Link}
-          href="/read"
-          size="lg"
-          className="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-8"
-        >
-          Start Reading
-        </Button>
-        <Button
-          as={Link}
-          href="/search"
-          size="lg"
-          variant="bordered"
-          className="border-zinc-700 text-zinc-300 hover:border-teal-500 hover:text-white px-8"
-        >
-          Search Ayahs
-        </Button>
-      </div>
+  <Button
+    as={Link}
+    href="/read"
+    size="lg"
+    className="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-8 py-3 rounded-full flex items-center justify-center text-center"
+  >
+    Start Reading
+  </Button>
+
+  <Button
+    as={Link}
+    href="/search"
+    size="lg"
+    className="border border-zinc-700 text-zinc-300 hover:border-teal-500 hover:text-white px-8 py-3 rounded-full flex items-center justify-center text-center"
+  >
+    Search Ayahs
+  </Button>
+</div>
 
       {/* Stats */}
       <div className="mt-16 grid grid-cols-3 gap-8 max-w-sm w-full">

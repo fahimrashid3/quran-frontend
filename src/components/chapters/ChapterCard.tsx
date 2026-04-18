@@ -29,7 +29,7 @@ export function ChapterCard({ ch }: { ch: Chapter }) {
       <div className="ml-auto flex flex-col items-end gap-1 shrink-0">
         <span
           className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${
-            ch.type === "Meccan"
+            ch.type === "meccan"
               ? "bg-amber-900/40 text-amber-400"
               : "bg-emerald-900/40 text-emerald-400"
           }`}
