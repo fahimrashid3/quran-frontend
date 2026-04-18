@@ -32,7 +32,7 @@ export function Navbar() {
         isBordered
         isMenuOpen={menuOpen}
         onMenuOpenChange={setMenuOpen}
-        className="bg-zinc-900 border-zinc-800"
+        className="bg-zinc-900 border-zinc-800 h-20 px-4"
         maxWidth="xl"
       >
         {/* Mobile toggle */}
@@ -53,21 +53,34 @@ export function Navbar() {
         </NavbarContent>
 
         {/* Desktop links */}
-        <NavbarContent className="hidden sm:flex gap-6" justify="center">
-          {links.map((l) => (
-            <NavbarItem key={l.href} isActive={pathname === l.href}>
-              <Link
-                href={l.href}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === l.href
-                    ? "text-teal-400"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {l.label}
-              </Link>
-            </NavbarItem>
-          ))}
+        <NavbarContent className="hidden sm:flex gap-8" justify="center">
+          {links.map((l) => {
+            const isActive = pathname === l.href;
+
+            return (
+              <NavbarItem key={l.href} isActive={isActive}>
+                <Link
+                  href={l.href}
+                  className={`relative text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "text-teal-400"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {l.label}
+
+                  {/* 🔥 Underline animation */}
+                  <span
+                    className={`absolute left-0 -bottom-1 h-0.5 w-full bg-teal-400 transition-transform duration-300 ${
+                      isActive
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </Link>
+              </NavbarItem>
+            );
+          })}
         </NavbarContent>
 
         {/* Settings button */}
@@ -75,7 +88,7 @@ export function Navbar() {
           <NavbarItem>
             <Button
               size="sm"
-              className="bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700"
+              className="bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 px-4 py-2 rounded-full transition"
               onPress={() => setSettingsOpen(true)}
             >
               ⚙️ Settings
@@ -84,14 +97,16 @@ export function Navbar() {
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu className="bg-zinc-900 pt-6 gap-4">
+        <NavbarMenu className="bg-zinc-900 pt-6 gap-5">
           {links.map((l) => (
             <NavbarMenuItem key={l.href}>
               <Link
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-base font-medium ${
-                  pathname === l.href ? "text-teal-400" : "text-zinc-300"
+                className={`text-base font-medium transition ${
+                  pathname === l.href
+                    ? "text-teal-400 underline"
+                    : "text-zinc-300 hover:text-white"
                 }`}
               >
                 {l.label}
@@ -101,7 +116,10 @@ export function Navbar() {
         </NavbarMenu>
       </HeroNavbar>
 
-      <SettingsPanel isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <SettingsPanel
+        isOpen={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+      />
     </>
   );
 }

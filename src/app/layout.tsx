@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${amiri.variable} ${scheherazade.variable} bg-background text-foreground min-h-screen flex flex-col`}>
         <Providers>
           <Navbar />
-          <main className="flex-1">
+          <main className="flex-1 min-h-screen">
             {children}
           </main>
           <Footer />
