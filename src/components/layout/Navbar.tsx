@@ -69,7 +69,6 @@ export function Navbar() {
                 >
                   {l.label}
 
-                  {/* 🔥 Underline animation */}
                   <span
                     className={`absolute left-0 -bottom-1 h-0.5 w-full bg-teal-400 transition-transform duration-300 ${
                       isActive
@@ -86,13 +85,13 @@ export function Navbar() {
         {/* Settings button */}
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button
-              size="sm"
-              className="bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 px-4 py-2 rounded-full transition"
-              onPress={() => setSettingsOpen(true)}
-            >
-              ⚙️ Settings
-            </Button>
+           <Button
+            size="sm"
+            className="bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 px-4 py-2 rounded-xl transition flex items-center justify-center text-center"
+            onPress={() => setSettingsOpen(true)}
+          >
+            ⚙️ Settings
+          </Button>
           </NavbarItem>
         </NavbarContent>
 

@@ -1,19 +1,8 @@
 "use client";
 
 import type { Settings } from "@/types";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  Select,
-  SelectItem,
-  Slider,
-} from "@heroui/react";
 import { useSettings } from "@/context/SettingsContext";
-import { useState } from "react";
+import { useEffect } from "react";
 
 export function SettingsPanel({
   isOpen,
@@ -23,163 +12,141 @@ export function SettingsPanel({
   onClose: () => void;
 }) {
   const { settings, update } = useSettings();
-  const [localSettings, setLocalSettings] = useState(settings);
 
-  const handleUpdate = (key: keyof Settings, value: unknown) => {
-    setLocalSettings((prev) => ({ ...prev, [key]: value }));
-    update({ [key]: value });
-  };
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  if (!isOpen) return null;
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      placement="center"
-      size="md"
-      backdrop="blur"
-      classNames={{
-        base: "bg-background/95 backdrop-blur-sm border border-border",
-        header: "border-b border-border/50",
-        footer: "border-t border-border/50",
-        closeButton: "hover:bg-default-100 active:bg-default-200",
-      }}
-    >
-      <ModalContent>
-        {(onClose) => (
-          <>
-            {/* HEADER */}
-            <ModalHeader className="flex items-center gap-2">
-              <span className="text-2xl">⚙️</span>
-              <span className="text-foreground text-xl font-semibold">
-                Settings
-              </span>
-            </ModalHeader>
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+      />
 
-            {/* BODY */}
-            <ModalBody className="gap-8 py-4">
-              {/* Arabic Font */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs text-foreground/60 uppercase tracking-wider font-semibold">
-                    Arabic Font
-                  </label>
-                  <span className="text-xs text-foreground/40">
-                    {settings.arabicFont}
-                  </span>
-                </div>
+      {/* Panel */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-md shadow-2xl pointer-events-auto">
 
-                <Select
-                  selectedKeys={new Set([settings.arabicFont])}
-                  onSelectionChange={(keys) => {
-                    const value = Array.from(keys)[0] as Settings["arabicFont"];
-                    handleUpdate("arabicFont", value);
-                  }}
-                  size="sm"
-                  classNames={{
-                    trigger: "bg-default-100 border-default-200 data-[hover=true]:bg-default-200",
-                    value: "text-foreground",
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⚙️</span>
+              <span className="text-white text-lg font-semibold">Settings</span>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-zinc-500 hover:text-white text-xl transition-colors"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Body */}
+          <div className="px-6 py-6 flex flex-col gap-7">
+
+            {/* Arabic Font */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                  Arabic Font
+                </label>
+                <span className="text-xs text-zinc-500">{settings.arabicFont}</span>
+              </div>
+              <select
+                value={settings.arabicFont}
+                onChange={(e) => update({ arabicFont: e.target.value as Settings["arabicFont"] })}
+                className="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-teal-500 transition-colors"
+              >
+                <option value="Amiri">Amiri</option>
+                <option value="Scheherazade New">Scheherazade New</option>
+              </select>
+
+              {/* Preview */}
+              <div className="mt-1 p-4 rounded-xl bg-zinc-800/50 border border-zinc-700">
+                <p
+                  className="text-right text-zinc-200 leading-loose transition-all duration-200"
+                  style={{
+                    fontFamily: settings.arabicFont,
+                    fontSize: `${settings.arabicFontSize}px`,
                   }}
                 >
-                  <SelectItem key="Amiri">Amiri</SelectItem>
-                  <SelectItem key="Scheherazade New">
-                    Scheherazade New
-                  </SelectItem>
-                  <SelectItem key="Noto Naskh Arabic">
-                    Noto Naskh Arabic
-                  </SelectItem>
-                  <SelectItem key="Lateef">Lateef</SelectItem>
-                </Select>
-
-                {/* Preview */}
-                <div className="mt-4 p-4 rounded-xl bg-default-100/50 border border-default-200">
-                  <p
-                    className="text-right text-foreground/80 leading-loose transition-all duration-200"
-                    style={{
-                      fontFamily: settings.arabicFont,
-                      fontSize: `${settings.arabicFontSize}px`,
-                    }}
-                  >
-                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-                  </p>
-                </div>
+                  بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+                </p>
               </div>
+            </div>
 
-              {/* Arabic Font Size */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs text-foreground/60 uppercase tracking-wider font-semibold">
-                    Arabic Font Size
-                  </label>
-                  <span className="text-sm text-primary font-medium">
-                    {settings.arabicFontSize}px
-                  </span>
-                </div>
-
-                <Slider
-                  minValue={20}
-                  maxValue={48}
-                  step={1}
-                  value={settings.arabicFontSize}
-                  onChange={(v) => {
-                    const value = Array.isArray(v) ? v[0] : v;
-                    handleUpdate("arabicFontSize", value);
-                  }}
-                  classNames={{
-                    track: "bg-default-200",
-                    filler: "bg-primary",
-                    thumb: "border-2 border-primary bg-background",
-                  }}
-                />
+            {/* Arabic Font Size */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                  Arabic Font Size
+                </label>
+                <span className="text-sm text-teal-400 font-medium">
+                  {settings.arabicFontSize}px
+                </span>
               </div>
-
-              {/* English Font Size */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs text-foreground/60 uppercase tracking-wider font-semibold">
-                    English Font Size
-                  </label>
-                  <span className="text-sm text-primary font-medium">
-                    {settings.englishFontSize}px
-                  </span>
-                </div>
-
-                <Slider
-                  minValue={12}
-                  maxValue={24}
-                  step={1}
-                  value={settings.englishFontSize}
-                  onChange={(v) => {
-                    const value = Array.isArray(v) ? v[0] : v;
-                    handleUpdate("englishFontSize", value);
-                  }}
-                  classNames={{
-                    track: "bg-default-200",
-                    filler: "bg-primary",
-                    thumb: "border-2 border-primary bg-background",
-                  }}
-                />
+              <input
+                type="range"
+                min={20}
+                max={48}
+                step={1}
+                value={settings.arabicFontSize}
+                onChange={(e) => update({ arabicFontSize: Number(e.target.value) })}
+                className="w-full accent-teal-500"
+              />
+              <div className="flex justify-between text-xs text-zinc-600">
+                <span>20px</span>
+                <span>48px</span>
               </div>
-            </ModalBody>
+            </div>
 
-            {/* FOOTER */}
-            <ModalFooter>
-              <Button
-                variant="ghost"
-                onPress={onClose}
-                className="text-foreground/70"
-              >
-                Cancel
-              </Button>
-              <Button
-                onPress={onClose}
-                className="font-medium text-black"
-              >
-                Done
-              </Button>
-            </ModalFooter>
-          </>
-        )}
-      </ModalContent>
-    </Modal>
+            {/* English Font Size */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                  English Font Size
+                </label>
+                <span className="text-sm text-teal-400 font-medium">
+                  {settings.englishFontSize}px
+                </span>
+              </div>
+              <input
+                type="range"
+                min={12}
+                max={24}
+                step={1}
+                value={settings.englishFontSize}
+                onChange={(e) => update({ englishFontSize: Number(e.target.value) })}
+                className="w-full accent-teal-500"
+              />
+              <div className="flex justify-between text-xs text-zinc-600">
+                <span>12px</span>
+                <span>24px</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="flex justify-end gap-3 px-6 py-4 border-t border-zinc-800">
+            <button
+              onClick={onClose}
+              className="px-5 py-2 text-sm text-zinc-400 hover:text-white border border-zinc-700 rounded-lg transition-colors"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </>
   );
 }
