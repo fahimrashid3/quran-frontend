@@ -4,6 +4,7 @@ import "../globals.css";
 import { Providers } from "../providers";
 import { getChapters } from "@/lib/api";
 import { ReadingLayoutShell } from "@/components/reading/ReadingLayoutShell";
+import { ReadingNavbar } from "@/components/reading/ReadingNavbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${amiri.variable} ${scheherazade.variable} flex min-h-screen flex-col bg-white font-(--font-inter) text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100`}
       >
         <Providers>
+          <ReadingNavbar />
           <ReadingLayoutShell chapters={chapters}>
             {children}
           </ReadingLayoutShell>

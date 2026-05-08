@@ -8,7 +8,6 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Button,
 } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,6 +21,24 @@ const links = [
   { label: "Search", href: "/search" },
 ];
 
+function GearIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M19.4 15a1 1 0 0 0 .2 1.1l.1.1a1 1 0 0 1 0 1.4l-1.4 1.4a1 1 0 0 1-1.4 0l-.1-.1a1 1 0 0 0-1.1-.2 1 1 0 0 0-.6.9V20a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-.2a1 1 0 0 0-.6-.9 1 1 0 0 0-1.1.2l-.1.1a1 1 0 0 1-1.4 0l-1.4-1.4a1 1 0 0 1 0-1.4l.1-.1a1 1 0 0 0 .2-1.1 1 1 0 0 0-.9-.6H4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h.2a1 1 0 0 0 .9-.6 1 1 0 0 0-.2-1.1l-.1-.1a1 1 0 0 1 0-1.4l1.4-1.4a1 1 0 0 1 1.4 0l.1.1a1 1 0 0 0 1.1.2 1 1 0 0 0 .6-.9V4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v.2a1 1 0 0 0 .6.9 1 1 0 0 0 1.1-.2l.1-.1a1 1 0 0 1 1.4 0l1.4 1.4a1 1 0 0 1 0 1.4l-.1.1a1 1 0 0 0-.2 1.1 1 1 0 0 0 .9.6H20a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-.2a1 1 0 0 0-.9.6Z" />
+    </svg>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +50,7 @@ export function Navbar() {
         isBordered
         isMenuOpen={menuOpen}
         onMenuOpenChange={setMenuOpen}
-        className="h-20 border-zinc-200 bg-white px-4 dark:border-zinc-800 dark:bg-zinc-900"
+        className="h-16 border-zinc-800 bg-zinc-950 px-4"
         maxWidth="xl"
       >
         {/* Mobile toggle */}
@@ -45,16 +62,19 @@ export function Navbar() {
         <NavbarContent className="sm:flex-none" justify="start">
           <NavbarBrand>
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl">📖</span>
-              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
-                Quran App
-              </span>
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-600 text-xs font-bold text-white">
+                Q
+              </div>
+              <div>
+                <p className="text-base font-semibold text-zinc-100">Quran Mazid</p>
+                <p className="text-[10px] text-zinc-500">Read, study, and learn the Quran</p>
+              </div>
             </Link>
           </NavbarBrand>
         </NavbarContent>
 
         {/* Desktop links */}
-        <NavbarContent className="hidden sm:flex gap-8" justify="center">
+        <NavbarContent className="hidden sm:flex gap-6" justify="center">
           {links.map((l) => {
             const isActive = pathname === l.href;
 
@@ -62,21 +82,13 @@ export function Navbar() {
               <NavbarItem key={l.href} isActive={isActive}>
                 <Link
                   href={l.href}
-                  className={`relative text-sm font-medium transition-all duration-300 ${
+                  className={`text-sm font-medium transition ${
                     isActive
-                      ? "text-teal-500"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                      ? "text-emerald-400"
+                      : "text-zinc-400 hover:text-zinc-200"
                   }`}
                 >
                   {l.label}
-
-                  <span
-                    className={`absolute left-0 -bottom-1 h-0.5 w-full bg-teal-400 transition-transform duration-300 ${
-                      isActive
-                        ? "scale-x-100"
-                        : "scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  />
                 </Link>
               </NavbarItem>
             );
@@ -89,27 +101,36 @@ export function Navbar() {
             <ThemeSwitch />
           </NavbarItem>
           <NavbarItem>
-           <Button
-            size="sm"
-            className="flex items-center justify-center rounded-xl border border-zinc-300 bg-zinc-100 px-4 py-2 text-center text-zinc-700 transition hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:text-white"
-            onPress={() => setSettingsOpen(true)}
-          >
-            ⚙️ Settings
-          </Button>
+            <button
+              type="button"
+              onClick={() => setSettingsOpen(true)}
+              aria-label="Settings"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 transition hover:text-zinc-200"
+            >
+              <GearIcon />
+            </button>
+          </NavbarItem>
+          <NavbarItem className="hidden sm:block">
+            <button
+              type="button"
+              className="rounded-full bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-emerald-600"
+            >
+              Support Us
+            </button>
           </NavbarItem>
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu className="gap-5 bg-white pt-6 dark:bg-zinc-900">
+        <NavbarMenu className="gap-5 bg-zinc-950 pt-6">
           {links.map((l) => (
             <NavbarMenuItem key={l.href}>
               <Link
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className={`text-base font-medium transition ${
+                className={`text-lg font-medium transition ${
                   pathname === l.href
-                    ? "text-teal-500 underline"
-                    : "text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                    ? "text-emerald-400 underline"
+                    : "text-zinc-300 hover:text-white"
                 }`}
               >
                 {l.label}
