@@ -13,10 +13,10 @@ export default function Page() {
 
       <div className="w-16 h-0.5 bg-teal-500 rounded-full mb-8" />
 
-      <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
+      <h1 className="text-5xl font-bold text-zinc-900 dark:text-white  mb-4 tracking-tight">
         Read the Holy Quran
       </h1>
-      <p className="text-zinc-400 text-lg max-w-xl mb-10 leading-relaxed">
+      <p className="text-zinc-400 dark:text-zinc-400 text-lg max-w-xl mb-10 leading-relaxed">
         Explore all 114 Surahs with Arabic text and English translation. Clean, fast, and distraction-free.
       </p>
 

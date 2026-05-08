@@ -14,6 +14,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { SettingsPanel } from "@/components/settings/SettingsPanel";
+import { ThemeSwitch } from "@/components/theme/ThemeSwitch";
 
 const links = [
   { label: "Home", href: "/" },
@@ -32,12 +33,12 @@ export function Navbar() {
         isBordered
         isMenuOpen={menuOpen}
         onMenuOpenChange={setMenuOpen}
-        className="bg-zinc-900 border-zinc-800 h-20 px-4"
+        className="h-20 border-zinc-200 bg-white px-4 dark:border-zinc-800 dark:bg-zinc-900"
         maxWidth="xl"
       >
         {/* Mobile toggle */}
         <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle className="text-zinc-300" />
+          <NavbarMenuToggle className="text-zinc-600 dark:text-zinc-300" />
         </NavbarContent>
 
         {/* Brand */}
@@ -45,7 +46,7 @@ export function Navbar() {
           <NavbarBrand>
             <Link href="/" className="flex items-center gap-2">
               <span className="text-2xl">📖</span>
-              <span className="font-bold text-white text-lg tracking-tight">
+              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
                 Quran App
               </span>
             </Link>
@@ -63,8 +64,8 @@ export function Navbar() {
                   href={l.href}
                   className={`relative text-sm font-medium transition-all duration-300 ${
                     isActive
-                      ? "text-teal-400"
-                      : "text-zinc-400 hover:text-white"
+                      ? "text-teal-500"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                   }`}
                 >
                   {l.label}
@@ -84,10 +85,13 @@ export function Navbar() {
 
         {/* Settings button */}
         <NavbarContent justify="end">
+          <NavbarItem className="hidden sm:block">
+            <ThemeSwitch />
+          </NavbarItem>
           <NavbarItem>
            <Button
             size="sm"
-            className="bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-700 px-4 py-2 rounded-xl transition flex items-center justify-center text-center"
+            className="flex items-center justify-center rounded-xl border border-zinc-300 bg-zinc-100 px-4 py-2 text-center text-zinc-700 transition hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:text-white"
             onPress={() => setSettingsOpen(true)}
           >
             ⚙️ Settings
@@ -96,7 +100,7 @@ export function Navbar() {
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu className="bg-zinc-900 pt-6 gap-5">
+        <NavbarMenu className="gap-5 bg-white pt-6 dark:bg-zinc-900">
           {links.map((l) => (
             <NavbarMenuItem key={l.href}>
               <Link
@@ -104,14 +108,17 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`text-base font-medium transition ${
                   pathname === l.href
-                    ? "text-teal-400 underline"
-                    : "text-zinc-300 hover:text-white"
+                    ? "text-teal-500 underline"
+                    : "text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 {l.label}
               </Link>
             </NavbarMenuItem>
           ))}
+          <NavbarMenuItem>
+            <ThemeSwitch />
+          </NavbarMenuItem>
         </NavbarMenu>
       </HeroNavbar>
 

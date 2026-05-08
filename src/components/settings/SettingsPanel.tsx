@@ -3,6 +3,7 @@
 import type { Settings } from "@/types";
 import { useSettings } from "@/context/SettingsContext";
 import { useEffect } from "react";
+import { ThemeSwitch } from "@/components/theme/ThemeSwitch";
 
 export function SettingsPanel({
   isOpen,
@@ -52,6 +53,12 @@ export function SettingsPanel({
 
           {/* Body */}
           <div className="px-6 py-6 flex flex-col gap-7">
+            <div className="flex items-center justify-between">
+              <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                Theme
+              </label>
+              <ThemeSwitch />
+            </div>
 
             {/* Arabic Font */}
             <div className="flex flex-col gap-2">

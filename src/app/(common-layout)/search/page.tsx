@@ -41,7 +41,7 @@ export default function SearchPage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-white mb-2">Search Ayahs</h1>
-        <p className="text-sm text-zinc-400">Search by English keyword or phrase</p>
+        <p className="text-sm text-zinc-400">Search by Arabic or English words</p>
       </div>
 
       {/* Search input */}
@@ -52,7 +52,7 @@ export default function SearchPage() {
         <input
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
-          placeholder="e.g. mercy, patience, light..."
+          placeholder="e.g. رحمة, mercy, patience..."
           className="w-full bg-zinc-800 text-white placeholder:text-zinc-500 border border-zinc-700 hover:border-teal-600 focus:border-teal-500 focus:outline-none rounded-xl px-4 py-3 pl-10 pr-10 text-sm transition-colors"
         />
         {isPending && (

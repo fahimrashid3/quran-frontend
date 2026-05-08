@@ -30,4 +30,5 @@ export interface Settings {
   arabicFont: "Amiri" | "Scheherazade New";
   arabicFontSize: number;
   englishFontSize: number;
+  theme: "light" | "dark";
 }
