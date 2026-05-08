@@ -28,29 +28,29 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
   };
 
   return (
-    <div className="bg-zinc-950/70 px-3 py-3 sm:px-5 sm:py-4">
+    <div className="bg-zinc-50 px-3 py-3 dark:bg-zinc-950/70 sm:px-5 sm:py-4">
       <div className="mb-2 flex items-center justify-between text-xs">
         <div className="text-emerald-400">{chapterId}:{verse.verse}</div>
         <div className="flex items-center gap-3">
-          <span className="text-zinc-600">○</span>
-          <span className="text-zinc-600">⟐</span>
-          <span className="text-zinc-600">⌂</span>
-          <span className="text-zinc-600">⋯</span>
+          <span className="text-zinc-500 dark:text-zinc-600">○</span>
+          <span className="text-zinc-500 dark:text-zinc-600">⟐</span>
+          <span className="text-zinc-500 dark:text-zinc-600">⌂</span>
+          <span className="text-zinc-500 dark:text-zinc-600">⋯</span>
         </div>
       </div>
       <div className="mb-2 flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-wide text-zinc-500">Saheeh International</span>
+        <span className="text-[10px] uppercase tracking-wide text-zinc-500 dark:text-zinc-500">Saheeh International</span>
         <button
           type="button"
           onClick={toggleAudio}
-          className="rounded-md border border-zinc-700 px-2 py-1 text-[10px] text-zinc-300 hover:border-emerald-500 hover:text-emerald-300"
+          className="rounded-md border border-zinc-300 px-2 py-1 text-[10px] text-zinc-700 hover:border-emerald-500 hover:text-emerald-600 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-emerald-300"
           aria-label={`Play ayah ${chapterId}:${verse.verse}`}
         >
           {isPlaying ? "Pause" : "Play"}
         </button>
       </div>
       <div className="mb-2 flex items-center justify-end">
-        <div className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-700 text-[10px] text-zinc-300">
+        <div className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-300 text-[10px] text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
           {verse.verse}
         </div>
       </div>
@@ -63,7 +63,7 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
       />
 
       <p
-        className="py-2 text-right leading-loose text-zinc-100 sm:px-2"
+        className="py-2 text-right leading-loose text-zinc-900 dark:text-zinc-100 sm:px-2"
         dir="rtl"
         style={{
           fontFamily: settings.arabicFont,
@@ -74,7 +74,7 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
       </p>
 
       <p
-        className="pt-2 leading-relaxed text-zinc-300 sm:px-2"
+        className="pt-2 leading-relaxed text-zinc-700 dark:text-zinc-300 sm:px-2"
         style={{ fontSize: `${settings.englishFontSize}px` }}
       >
         {verse.english}

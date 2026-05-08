@@ -28,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${amiri.variable} ${scheherazade.variable} min-h-screen flex flex-col`}
         style={{
           backgroundColor: "var(--background)",
@@ -39,7 +40,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
 
-          <main className="flex-1 min-h-screen bg-white dark:bg-zinc-950 text-white dark:text-zinc-900">
+          <main className="min-h-screen flex-1 bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
             {children}
           </main>
 

@@ -10,10 +10,10 @@ export default async function ReadPage() {
         <span className="text-[11px] font-bold tracking-[2px] uppercase text-emerald-400">
           114 Surahs
         </span>
-        <h1 className="mt-3 text-3xl font-bold text-zinc-100 tracking-tight">
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
           Read the Quran
         </h1>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
           Choose a Surah from the left sidebar or the quick grid below.
         </p>
         <div className="mx-auto mt-4 h-0.5 w-10 rounded-full bg-emerald-500" />

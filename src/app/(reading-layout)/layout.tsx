@@ -41,7 +41,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${amiri.variable} ${scheherazade.variable} font-[var(--font-inter)] bg-zinc-950 text-white min-h-screen flex flex-col`}
+        className={`${inter.variable} ${amiri.variable} ${scheherazade.variable} flex min-h-screen flex-col bg-white font-(--font-inter) text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100`}
       >
         <Providers>
           <ReadingLayoutShell chapters={chapters}>

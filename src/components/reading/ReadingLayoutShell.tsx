@@ -18,7 +18,7 @@ export function ReadingLayoutShell({
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
-    <main className="h-screen overflow-hidden bg-zinc-950 text-zinc-100">
+    <main className="h-screen overflow-hidden bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <div className="flex h-full">
         <IconSidebar />
         <SurahSidebar chapters={chapters} />
@@ -26,10 +26,10 @@ export function ReadingLayoutShell({
         {/* Main */}
         <section className="flex-1 h-full overflow-y-auto">
           {/* Mobile Topbar */}
-          <div className="sticky top-0 z-20 flex items-center justify-between border-b border-zinc-800 bg-zinc-950/95 px-4 py-3 backdrop-blur lg:hidden">
+          <div className="sticky top-0 z-20 flex items-center justify-between border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/95 lg:hidden">
             <button
               onClick={() => setDrawerOpen(true)}
-              className="rounded-md border border-zinc-700 px-3 py-1 text-sm"
+              className="rounded-md border border-zinc-300 px-3 py-1 text-sm text-zinc-700 dark:border-zinc-700 dark:text-zinc-200"
             >
               ☰ Surahs
             </button>
@@ -38,7 +38,7 @@ export function ReadingLayoutShell({
 
             <button
               onClick={() => setSettingsOpen(true)}
-              className="rounded-md border border-zinc-700 px-3 py-1 text-sm"
+              className="rounded-md border border-zinc-300 px-3 py-1 text-sm text-zinc-700 dark:border-zinc-700 dark:text-zinc-200"
             >
               ⚙️
             </button>
@@ -66,8 +66,8 @@ export function ReadingLayoutShell({
             onClick={() => setSettingsOpen(false)}
           />
 
-          <div className="absolute right-0 top-0 h-full w-[320px] bg-zinc-950 shadow-xl">
-            <div className="flex items-center justify-between border-b border-zinc-800 p-4">
+          <div className="absolute right-0 top-0 h-full w-[320px] bg-white shadow-xl dark:bg-zinc-950">
+            <div className="flex items-center justify-between border-b border-zinc-200 p-4 dark:border-zinc-800">
               <p className="font-semibold">Settings</p>
               <button onClick={() => setSettingsOpen(false)}>✕</button>
             </div>

@@ -22,18 +22,18 @@ export function SurahSidebar({ chapters }: { chapters: Chapter[] }) {
   );
 
   return (
-    <aside className="hidden lg:flex h-full w-[300px] flex-col border-r border-zinc-800 bg-zinc-950 scrollbar-hide">
+    <aside className="scrollbar-hide hidden h-full w-[300px] flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 lg:flex">
       {/* Header */}
-      <div className="border-b border-zinc-800 px-4 py-3">
+      <div className="border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
         {/* Tabs */}
-        <div className="mb-3 flex gap-1 rounded-xl bg-zinc-900 p-1 text-xs">
+        <div className="mb-3 flex gap-1 rounded-xl bg-zinc-100 p-1 text-xs dark:bg-zinc-900">
           {["Surah", "Juz", "Page"].map((tab) => (
             <button
               key={tab}
               className={`flex-1 rounded-lg py-1 transition ${
                 tab === "Surah"
-                  ? "bg-zinc-800 text-zinc-200"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-200"
+                  : "text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
               }`}
             >
               {tab}
@@ -46,7 +46,7 @@ export function SurahSidebar({ chapters }: { chapters: Chapter[] }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search Surah..."
-          className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-zinc-300 placeholder:text-zinc-600 focus:border-emerald-700 focus:outline-none"
+          className="w-full rounded-xl border border-zinc-300 bg-zinc-100 px-3 py-2 text-xs text-zinc-700 placeholder:text-zinc-400 focus:border-emerald-700 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:placeholder:text-zinc-600"
         />
       </div>
 
@@ -60,7 +60,7 @@ export function SurahSidebar({ chapters }: { chapters: Chapter[] }) {
               className={`block rounded-xl border px-3 py-2 transition ${
                 activeId === chapter.id
                   ? "border-emerald-700/60 bg-emerald-900/25 text-emerald-200"
-                  : "border-zinc-900 bg-zinc-950 hover:border-zinc-800 hover:bg-zinc-900"
+                  : "border-zinc-200 bg-white hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-900 dark:bg-zinc-950 dark:hover:border-zinc-800 dark:hover:bg-zinc-900"
               }`}
             >
               <div className="flex items-center justify-between">
