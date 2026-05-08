@@ -14,26 +14,19 @@ export default async function SurahPage({
   if (!surah) return notFound();
   const chapter = chapters.find((c) => c.id === surah.chapter);
 
+  console.log(surah)
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
-      <div className="mb-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-center sm:p-8">
+    <div className="mx-auto max-w-4xl px-3 py-4 sm:px-6">
+      <div className="mb-5 py-4 text-center">
         <p
-          className="mb-3 text-4xl leading-loose text-zinc-100 sm:text-5xl"
-          style={{ fontFamily: "Amiri" }}
+          className="mb-1 text-3xl leading-loose text-zinc-100 sm:text-4xl"
         >
-          {surah.name}
+          Surah {chapter?.transliteration}
         </p>
-        <h1 className="text-xl font-bold text-zinc-100">{surah.transliteration}</h1>
-        <p className="mt-1 text-sm text-zinc-400">Surah {surah.chapter}</p>
-        <div className="mt-4 flex justify-center gap-6">
-          <span className="text-xs text-zinc-400">{surah.verses.length} Ayahs</span>
-          <span className="text-xs text-zinc-400 capitalize">
-            {chapter?.type === "meccan" ? "Makkah" : chapter?.type === "medinan" ? "Madinah" : "Unknown"}
-          </span>
-        </div>
+        <p className="text-xs text-zinc-500">Ayah-{surah.verses.length}, {chapter?.type === "meccan" ? "Makkah" : chapter?.type === "medinan" ? "Madinah" : "Unknown"}</p>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col divide-y divide-zinc-900 border-y border-zinc-800">
         {surah.verses.map((v) => (
           <VerseCard key={v.verse} verse={v} chapterId={surah.chapter} />
         ))}

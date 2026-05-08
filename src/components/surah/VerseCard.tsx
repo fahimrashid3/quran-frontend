@@ -28,21 +28,30 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
   };
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900 transition-colors hover:border-zinc-700">
-      <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-700/60 bg-emerald-900/40">
-          <span className="text-xs font-bold text-emerald-300">{verse.verse}</span>
-        </div>
+    <div className="bg-zinc-950/70 px-3 py-3 sm:px-5 sm:py-4">
+      <div className="mb-2 flex items-center justify-between text-xs">
+        <div className="text-emerald-400">{chapterId}:{verse.verse}</div>
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={toggleAudio}
-            className="rounded-md border border-zinc-700 px-2 py-1 text-xs text-zinc-200 hover:border-emerald-500 hover:text-emerald-300"
-            aria-label={`Play ayah ${chapterId}:${verse.verse}`}
-          >
-            {isPlaying ? "Pause" : "Play"}
-          </button>
-          <span className="text-xs text-zinc-500">{chapterId}:{verse.verse}</span>
+          <span className="text-zinc-600">○</span>
+          <span className="text-zinc-600">⟐</span>
+          <span className="text-zinc-600">⌂</span>
+          <span className="text-zinc-600">⋯</span>
+        </div>
+      </div>
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-[10px] uppercase tracking-wide text-zinc-500">Saheeh International</span>
+        <button
+          type="button"
+          onClick={toggleAudio}
+          className="rounded-md border border-zinc-700 px-2 py-1 text-[10px] text-zinc-300 hover:border-emerald-500 hover:text-emerald-300"
+          aria-label={`Play ayah ${chapterId}:${verse.verse}`}
+        >
+          {isPlaying ? "Pause" : "Play"}
+        </button>
+      </div>
+      <div className="mb-2 flex items-center justify-end">
+        <div className="flex h-7 w-7 items-center justify-center rounded-full border border-zinc-700 text-[10px] text-zinc-300">
+          {verse.verse}
         </div>
       </div>
       <audio
@@ -54,7 +63,7 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
       />
 
       <p
-        className="px-6 py-5 text-right leading-loose text-zinc-100"
+        className="py-2 text-right leading-loose text-zinc-100 sm:px-2"
         dir="rtl"
         style={{
           fontFamily: settings.arabicFont,
@@ -64,10 +73,8 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
         {verse.arabic}
       </p>
 
-      <div className="mx-5 border-t border-zinc-800" />
-
       <p
-        className="px-6 py-4 leading-relaxed text-zinc-300"
+        className="pt-2 leading-relaxed text-zinc-300 sm:px-2"
         style={{ fontSize: `${settings.englishFontSize}px` }}
       >
         {verse.english}

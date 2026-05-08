@@ -5,7 +5,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "../providers";
 
-
 const amiri = Amiri({
   subsets: ["arabic"],
   weight: ["400", "700"],
@@ -23,15 +22,27 @@ export const metadata: Metadata = {
   description: "Read and explore the Holy Quran",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`${amiri.variable} ${scheherazade.variable} bg-background text-foreground min-h-screen flex flex-col`}>
+      <body
+        className={`${amiri.variable} ${scheherazade.variable} min-h-screen flex flex-col`}
+        style={{
+          backgroundColor: "var(--background)",
+          color: "var(--foreground)",
+        }}
+      >
         <Providers>
           <Navbar />
-          <main className="flex-1 min-h-screen">
+
+          <main className="flex-1 min-h-screen bg-white dark:bg-zinc-950 text-white dark:text-zinc-900">
             {children}
           </main>
+
           <Footer />
         </Providers>
       </body>
