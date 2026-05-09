@@ -38,22 +38,22 @@ export default function SearchPage() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="mx-auto max-w-3xl px-4 py-12">
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-white mb-2">Search Ayahs</h1>
-        <p className="text-sm text-zinc-400">Search by Arabic or English words</p>
+        <h1 className="mb-2 text-3xl font-bold text-zinc-900 dark:text-zinc-100">Search Ayahs</h1>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">Search by Arabic or English words</p>
       </div>
 
       {/* Search input */}
       <div className="relative">
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-sm pointer-events-none">
+        <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-zinc-400">
           🔍
         </span>
         <input
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="e.g. رحمة, mercy, patience..."
-          className="w-full bg-zinc-800 text-white placeholder:text-zinc-500 border border-zinc-700 hover:border-teal-600 focus:border-teal-500 focus:outline-none rounded-xl px-4 py-3 pl-10 pr-10 text-sm transition-colors"
+          className="w-full rounded-xl border border-zinc-300 bg-zinc-100 px-4 py-3 pl-10 pr-10 text-sm text-zinc-900 placeholder:text-zinc-500 transition-colors hover:border-primary focus:border-primary focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
         />
         {isPending && (
           <div className="absolute right-4 top-1/2 -translate-y-1/2">
@@ -68,19 +68,19 @@ export default function SearchPage() {
           <Link
             key={`${r.chapter}-${r.verse}`}
             href={`/surah/${r.chapter}`}
-            className="block p-5 border border-zinc-800 rounded-xl bg-zinc-900 hover:border-teal-600 transition-colors"
+            className="block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-primary dark:border-zinc-800 dark:bg-zinc-900"
           >
             {/* Surah name header */}
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-zinc-800">
-              <span className="text-sm font-semibold text-white">
+            <div className="mb-3 flex items-center justify-between border-b border-zinc-200 pb-2 dark:border-zinc-800">
+              <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 {getSurahName(r.chapter)}
               </span>
-              <span className="text-xs font-bold bg-teal-900/50 text-teal-400 px-2 py-0.5 rounded-full">
+              <span className="rounded-full bg-primary/20 px-2 py-0.5 text-xs font-bold text-primary">
                 {r.chapter}:{r.verse}
               </span>
             </div>
 
-            <p className="text-sm text-zinc-300 leading-relaxed">{r.text}</p>
+            <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{r.text}</p>
           </Link>
         ))}
 

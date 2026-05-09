@@ -64,7 +64,7 @@ export function ReadingNavbar() {
 
   return (
     <header
-      className={`sticky top-0 z-30 hidden h-16 items-center justify-between border-b border-zinc-800 bg-zinc-950/95 px-5 backdrop-blur transition-transform duration-300 ease-out lg:flex ${
+      className={`sticky top-0 z-30 hidden h-16 items-center justify-between border-b border-zinc-200 bg-white/95 px-5 backdrop-blur transition-transform duration-300 ease-out dark:border-zinc-800 dark:bg-zinc-950/95 lg:flex ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -73,7 +73,7 @@ export function ReadingNavbar() {
           Q
         </div>
         <div>
-          <p className=" font-semibold text-zinc-100">Quran Mazid</p>
+          <p className="font-semibold text-zinc-900 dark:text-zinc-100">Quran Mazid</p>
           <p className="text-[10px] text-zinc-500">Read, study, and listen</p>
         </div>
       </div>
@@ -82,7 +82,7 @@ export function ReadingNavbar() {
         <button
           type="button"
           aria-label="Search"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 transition hover:text-zinc-200"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-100 text-zinc-600 transition hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
         >
           <SearchIcon />
         </button>

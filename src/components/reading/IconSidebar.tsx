@@ -80,7 +80,7 @@ export function IconSidebar() {
   };
 
   return (
-    <aside className="hidden w-[56px] flex-col items-center justify-between border-r border-zinc-800 bg-black py-4 lg:flex">
+    <aside className="hidden w-[56px] flex-col items-center justify-between border-r border-zinc-200 bg-zinc-50 py-4 dark:border-zinc-800 dark:bg-black lg:flex">
       <div className="flex flex-col items-center gap-3">
         {mainLinks.map((item) => (
           <Link
@@ -90,7 +90,7 @@ export function IconSidebar() {
             className={`inline-flex h-8 w-8 items-center justify-center rounded-md transition ${
               isActive(item.href)
                 ? "bg-primary text-white"
-                : "text-zinc-500 hover:bg-zinc-900 hover:text-zinc-200"
+                : "text-zinc-500 hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-zinc-200"
             }`}
           >
             <item.icon />
@@ -104,7 +104,7 @@ export function IconSidebar() {
             key={item.label}
             type="button"
             aria-label={item.label}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 transition hover:bg-zinc-900 hover:text-zinc-200"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 transition hover:bg-zinc-200 hover:text-zinc-800 dark:hover:bg-zinc-900 dark:hover:text-zinc-200"
           >
             <item.icon />
           </button>

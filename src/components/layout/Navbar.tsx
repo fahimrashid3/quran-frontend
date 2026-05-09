@@ -50,7 +50,7 @@ export function Navbar() {
         isBordered
         isMenuOpen={menuOpen}
         onMenuOpenChange={setMenuOpen}
-        className="h-16 border-zinc-800 bg-zinc-950 px-4"
+        className="h-16 border-zinc-200 bg-white px-4 dark:border-zinc-800 dark:bg-zinc-950"
         maxWidth="xl"
       >
         {/* Mobile toggle */}
@@ -66,7 +66,7 @@ export function Navbar() {
                 Q
               </div>
               <div>
-                <p className="text-base font-semibold text-zinc-100">Quran Mazid</p>
+                <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Quran Mazid</p>
                 <p className="text-[10px] text-zinc-500">Read, study, and learn the Quran</p>
               </div>
             </Link>
@@ -85,7 +85,7 @@ export function Navbar() {
                   className={`text-sm font-medium transition ${
                     isActive
                       ? "text-primary"
-                      : "text-zinc-400 hover:text-zinc-200"
+                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
                   }`}
                 >
                   {l.label}
@@ -105,7 +105,7 @@ export function Navbar() {
               type="button"
               onClick={() => setSettingsOpen(true)}
               aria-label="Settings"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 transition hover:text-zinc-200"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-100 text-zinc-600 transition hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
             >
               <GearIcon />
             </button>
@@ -121,7 +121,7 @@ export function Navbar() {
         </NavbarContent>
 
         {/* Mobile menu */}
-        <NavbarMenu className="gap-5 bg-zinc-950 pt-6">
+        <NavbarMenu className="gap-5 bg-white pt-6 dark:bg-zinc-950">
           {links.map((l) => (
             <NavbarMenuItem key={l.href}>
               <Link
@@ -130,7 +130,7 @@ export function Navbar() {
                 className={`text-lg font-medium transition ${
                   pathname === l.href
                     ? "text-primary underline"
-                    : "text-zinc-300 hover:text-white"
+                    : "text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
                 }`}
               >
                 {l.label}

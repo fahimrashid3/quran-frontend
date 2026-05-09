@@ -25,12 +25,12 @@ export function MobileSurahDrawer({
   return (
     <div className="fixed inset-0 z-40 lg:hidden">
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
-      <div className="absolute left-0 top-0 h-full w-[86%] max-w-sm border-r border-zinc-800 bg-zinc-900 flex flex-col">
-        <div className="flex items-center justify-between px-4 py-4 border-b border-zinc-800">
-          <h3 className="text-sm font-semibold text-zinc-100">All 114 Surahs</h3>
+      <div className="absolute left-0 top-0 flex h-full w-[86%] max-w-sm flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-4 dark:border-zinc-800">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">All 114 Surahs</h3>
           <button
             onClick={onClose}
-            className="text-sm text-zinc-400 hover:text-white"
+            className="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
           >
             ✕
           </button>
@@ -44,7 +44,7 @@ export function MobileSurahDrawer({
               className={`block rounded-lg px-3 py-2 transition ${
                 activeId === chapter.id
                   ? "bg-primary/20 text-primary"
-                  : "hover:bg-zinc-800 text-zinc-300"
+                  : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               }`}
             >
               <div className="flex items-center justify-between">

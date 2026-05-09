@@ -35,17 +35,17 @@ export function SettingsPanel({
 
       {/* Panel */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-md shadow-2xl pointer-events-auto">
+        <div className="pointer-events-auto w-full max-w-md rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-700 dark:bg-zinc-900">
 
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
+          <div className="flex items-center justify-between border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
             <div className="flex items-center gap-2">
-              <span className="text-xl">⚙️</span>
-              <span className="text-white text-lg font-semibold">Settings</span>
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/15 text-sm text-primary">⚙️</span>
+              <span className="text-lg font-semibold text-zinc-900 dark:text-white">Settings</span>
             </div>
             <button
               onClick={onClose}
-              className="text-zinc-500 hover:text-white text-xl transition-colors"
+              className="text-xl text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white"
             >
               ✕
             </button>
@@ -54,7 +54,7 @@ export function SettingsPanel({
           {/* Body */}
           <div className="px-6 py-6 flex flex-col gap-7">
             <div className="flex items-center justify-between">
-              <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+              <label className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                 Theme
               </label>
               <ThemeSwitch />
@@ -63,7 +63,7 @@ export function SettingsPanel({
             {/* Arabic Font */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                <label className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                   Arabic Font
                 </label>
                 <span className="text-xs text-zinc-500">{settings.arabicFont}</span>
@@ -71,16 +71,16 @@ export function SettingsPanel({
               <select
                 value={settings.arabicFont}
                 onChange={(e) => update({ arabicFont: e.target.value as Settings["arabicFont"] })}
-                className="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-teal-500 transition-colors"
+                className="w-full rounded-lg border border-zinc-300 bg-zinc-100 px-3 py-2 text-sm text-zinc-900 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
               >
                 <option value="Amiri">Amiri</option>
                 <option value="Scheherazade New">Scheherazade New</option>
               </select>
 
               {/* Preview */}
-              <div className="mt-1 p-4 rounded-xl bg-zinc-800/50 border border-zinc-700">
+              <div className="mt-1 rounded-xl border border-zinc-200 bg-zinc-100 p-4 dark:border-zinc-700 dark:bg-zinc-800/50">
                 <p
-                  className="text-right text-zinc-200 leading-loose transition-all duration-200"
+                  className="text-right leading-loose text-zinc-800 transition-all duration-200 dark:text-zinc-200"
                   style={{
                     fontFamily: settings.arabicFont,
                     fontSize: `${settings.arabicFontSize}px`,
@@ -94,10 +94,10 @@ export function SettingsPanel({
             {/* Arabic Font Size */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                <label className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                   Arabic Font Size
                 </label>
-                <span className="text-sm text-teal-400 font-medium">
+                <span className="text-primary text-sm font-medium">
                   {settings.arabicFontSize}px
                 </span>
               </div>
@@ -108,7 +108,7 @@ export function SettingsPanel({
                 step={1}
                 value={settings.arabicFontSize}
                 onChange={(e) => update({ arabicFontSize: Number(e.target.value) })}
-                className="w-full accent-teal-500"
+                className="w-full accent-(--primary)"
               />
               <div className="flex justify-between text-xs text-zinc-600">
                 <span>20px</span>
@@ -119,10 +119,10 @@ export function SettingsPanel({
             {/* English Font Size */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                <label className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                   English Font Size
                 </label>
-                <span className="text-sm text-teal-400 font-medium">
+                <span className="text-primary text-sm font-medium">
                   {settings.englishFontSize}px
                 </span>
               </div>
@@ -133,7 +133,7 @@ export function SettingsPanel({
                 step={1}
                 value={settings.englishFontSize}
                 onChange={(e) => update({ englishFontSize: Number(e.target.value) })}
-                className="w-full accent-teal-500"
+                className="w-full accent-(--primary)"
               />
               <div className="flex justify-between text-xs text-zinc-600">
                 <span>12px</span>
@@ -143,10 +143,10 @@ export function SettingsPanel({
           </div>
 
           {/* Footer */}
-          <div className="flex justify-end gap-3 px-6 py-4 border-t border-zinc-800">
+          <div className="flex justify-end gap-3 border-t border-zinc-200 px-6 py-4 dark:border-zinc-800">
             <button
               onClick={onClose}
-              className="px-5 py-2 text-sm text-zinc-400 hover:text-white border border-zinc-700 rounded-lg transition-colors"
+              className="rounded-lg border border-zinc-300 px-5 py-2 text-sm text-zinc-600 transition-colors hover:border-primary hover:text-primary dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-primary"
             >
               Close
             </button>
