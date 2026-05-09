@@ -61,7 +61,7 @@ export function RightPanel({ mobile = false }: { mobile?: boolean }) {
         <div>
           <div className="mb-2 flex justify-between text-zinc-600 dark:text-zinc-400">
             <span>Arabic Font Size</span>
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-primary font-semibold">
               {settings.arabicFontSize}px
             </span>
           </div>
@@ -74,14 +74,14 @@ export function RightPanel({ mobile = false }: { mobile?: boolean }) {
             onChange={(e) =>
               update({ arabicFontSize: Number(e.target.value) })
             }
-            className="w-full accent-emerald-500"
+            className="w-full accent-(--primary)"
           />
         </div>
 
         <div>
           <div className="mb-2 flex justify-between text-zinc-600 dark:text-zinc-400">
             <span>Translation Font Size</span>
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-primary font-semibold">
               {settings.englishFontSize}px
             </span>
           </div>
@@ -94,7 +94,7 @@ export function RightPanel({ mobile = false }: { mobile?: boolean }) {
             onChange={(e) =>
               update({ englishFontSize: Number(e.target.value) })
             }
-            className="w-full accent-emerald-500"
+            className="w-full accent-(--primary)"
           />
         </div>
 
@@ -108,7 +108,7 @@ export function RightPanel({ mobile = false }: { mobile?: boolean }) {
             Support this mission and be part of the change.
           </p>
 
-          <button className="mt-3 w-full rounded-md bg-emerald-600 py-2 text-xs font-semibold text-white">
+          <button className="mt-3 w-full rounded-md bg-primary py-2 text-xs font-semibold text-white hover:bg-primary-dark">
             Support Us
           </button>
         </div>

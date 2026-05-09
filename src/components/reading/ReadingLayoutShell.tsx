@@ -19,12 +19,15 @@ export function ReadingLayoutShell({
 
   return (
     <main className="min-h-0 flex-1 overflow-hidden bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-      <div className="flex h-full">
+      <div className="flex h-full min-h-0">
         <IconSidebar />
         <SurahSidebar chapters={chapters} />
 
         {/* Main */}
-        <section id="reading-scroll-area" className="flex-1 h-full overflow-y-auto">
+        <section
+          id="reading-scroll-area"
+          className="h-full min-h-0 flex-1 overflow-y-auto"
+        >
 
           {/* Mobile Topbar */}
           <div className="sticky top-0 z-20 flex items-center justify-between border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/95 lg:hidden">

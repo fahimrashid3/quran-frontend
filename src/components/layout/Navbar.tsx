@@ -62,7 +62,7 @@ export function Navbar() {
         <NavbarContent className="sm:flex-none" justify="start">
           <NavbarBrand>
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-600 text-xs font-bold text-white">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-xs font-bold text-white">
                 Q
               </div>
               <div>
@@ -84,7 +84,7 @@ export function Navbar() {
                   href={l.href}
                   className={`text-sm font-medium transition ${
                     isActive
-                      ? "text-emerald-400"
+                      ? "text-primary"
                       : "text-zinc-400 hover:text-zinc-200"
                   }`}
                 >
@@ -113,7 +113,7 @@ export function Navbar() {
           <NavbarItem className="hidden sm:block">
             <button
               type="button"
-              className="rounded-full bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-emerald-600"
+              className="rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-primary-dark"
             >
               Support Us
             </button>
@@ -129,7 +129,7 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`text-lg font-medium transition ${
                   pathname === l.href
-                    ? "text-emerald-400 underline"
+                    ? "text-primary underline"
                     : "text-zinc-300 hover:text-white"
                 }`}
               >

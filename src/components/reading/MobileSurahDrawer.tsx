@@ -43,7 +43,7 @@ export function MobileSurahDrawer({
               onClick={onClose}
               className={`block rounded-lg px-3 py-2 transition ${
                 activeId === chapter.id
-                  ? "bg-emerald-900/40 text-emerald-300"
+                  ? "bg-primary/20 text-primary"
                   : "hover:bg-zinc-800 text-zinc-300"
               }`}
             >

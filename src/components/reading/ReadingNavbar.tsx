@@ -69,7 +69,7 @@ export function ReadingNavbar() {
       }`}
     >
       <div className="flex items-center gap-2">
-        <div className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-600 text-xs font-bold text-white">
+        <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-xs font-bold text-white">
           Q
         </div>
         <div>
@@ -89,7 +89,7 @@ export function ReadingNavbar() {
         <ThemeSwitch />
         <button
           type="button"
-          className="rounded-full bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-emerald-600"
+          className="rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-primary-dark"
         >
           Support Us
         </button>

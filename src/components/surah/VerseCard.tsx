@@ -30,7 +30,7 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
   return (
     <div className="bg-zinc-50 px-3 py-3 dark:bg-zinc-950/70 sm:px-5 sm:py-4">
       <div className="mb-2 flex items-center justify-between text-xs">
-        <div className="text-emerald-400">{chapterId}:{verse.verse}</div>
+        <div className="text-primary">{chapterId}:{verse.verse}</div>
         <div className="flex items-center gap-3">
           <span className="text-zinc-500 dark:text-zinc-600">○</span>
           <span className="text-zinc-500 dark:text-zinc-600">⟐</span>
@@ -43,7 +43,7 @@ export function VerseCard({ verse, chapterId }: { verse: Verse; chapterId: numbe
         <button
           type="button"
           onClick={toggleAudio}
-          className="rounded-md border border-zinc-300 px-2 py-1 text-[10px] text-zinc-700 hover:border-emerald-500 hover:text-emerald-600 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-emerald-300"
+          className="rounded-md border border-zinc-300 px-2 py-1 text-[10px] text-zinc-700 hover:border-primary hover:text-primary dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-primary"
           aria-label={`Play ayah ${chapterId}:${verse.verse}`}
         >
           {isPlaying ? "Pause" : "Play"}

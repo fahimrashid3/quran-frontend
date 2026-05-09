@@ -89,7 +89,7 @@ export function IconSidebar() {
             aria-label={item.label}
             className={`inline-flex h-8 w-8 items-center justify-center rounded-md transition ${
               isActive(item.href)
-                ? "bg-emerald-600/90 text-white"
+                ? "bg-primary text-white"
                 : "text-zinc-500 hover:bg-zinc-900 hover:text-zinc-200"
             }`}
           >

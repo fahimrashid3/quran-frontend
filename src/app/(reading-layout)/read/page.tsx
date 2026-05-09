@@ -7,7 +7,7 @@ export default async function ReadPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       <div className="mb-8 text-center">
-        <span className="text-[11px] font-bold tracking-[2px] uppercase text-emerald-400">
+        <span className="text-primary text-[11px] font-bold tracking-[2px] uppercase">
           114 Surahs
         </span>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
@@ -16,7 +16,7 @@ export default async function ReadPage() {
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
           Choose a Surah from the left sidebar or the quick grid below.
         </p>
-        <div className="mx-auto mt-4 h-0.5 w-10 rounded-full bg-emerald-500" />
+        <div className="bg-primary mx-auto mt-4 h-0.5 w-10 rounded-full" />
       </div>
 
       {chapters.length === 0 ? (
