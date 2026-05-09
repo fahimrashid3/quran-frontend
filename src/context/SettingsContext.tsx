@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useSyncExternalStore } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import type { Settings } from "@/types";
 
 const defaults: Settings = {
@@ -52,18 +52,34 @@ const SettingsContext = createContext<{
 }>({ settings: defaults, update: () => {} });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-  const settings = useSyncExternalStore(subscribe, readSettings, () => defaults);
+  const [settings, setSettings] = useState<Settings>(defaults);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSettings(readSettings());
+
+    const onStoreChange = () => setSettings(readSettings());
+
+    window.addEventListener("storage", onStoreChange);
+    window.addEventListener(SETTINGS_EVENT, onStoreChange);
+
+    return () => {
+      window.removeEventListener("storage", onStoreChange);
+      window.removeEventListener(SETTINGS_EVENT, onStoreChange);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", settings.theme === "dark");
+  }, [settings.theme]);
 
   const update = (partial: Partial<Settings>) => {
     const next = { ...readSettings(), ...partial };
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
+    setSettings(next);
     window.dispatchEvent(new Event(SETTINGS_EVENT));
   };
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", settings.theme === "dark");
-  }, [settings.theme]);
 
   return (
     <SettingsContext.Provider value={{ settings, update }}>

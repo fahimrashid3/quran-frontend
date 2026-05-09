@@ -4,7 +4,7 @@ export function SurahHeader({ chapter }: { chapter: Chapter }) {
   return (
     <div className="grid grid-cols-1 items-center gap-y-4 border-b border-zinc-200 px-6 py-5 dark:border-zinc-800 tablet:grid-cols-3">
       {/* Left image - Makkah/Madinah */}
-      <div className="hidden lg:block w-[140px]">
+      <div className="hidden lg:block w-35">
         {chapter.type === "meccan" ? (
           <div className="flex items-center gap-2 text-zinc-500">
             <span className="text-xs">makkah</span>

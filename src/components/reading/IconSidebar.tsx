@@ -80,7 +80,7 @@ export function IconSidebar() {
   };
 
   return (
-    <aside className="hidden w-[56px] flex-col items-center justify-between border-r border-zinc-200 bg-zinc-50 py-4 dark:border-zinc-800 dark:bg-black lg:flex">
+    <aside className="hidden w-14 flex-col items-center justify-between border-r border-zinc-200 bg-zinc-50 py-4 dark:border-zinc-800 dark:bg-black lg:flex">
       <div className="flex flex-col items-center gap-3">
         {mainLinks.map((item) => (
           <Link

@@ -13,8 +13,8 @@ const cinzel = Cinzel_Decorative({
 export default function Page() {
   return (
     <div className="relative overflow-hidden flex flex-col items-center justify-center min-h-[80vh] px-6 text-center bg-white dark:bg-zinc-950">
-      <HomeTopOrnament className="pointer-events-none absolute left-[8%] top-0 hidden md:block w-[66px] h-[186px] text-zinc-400 dark:text-zinc-600 opacity-80" />
-      <HomeTopOrnament className="pointer-events-none absolute right-[8%] top-0 hidden md:block w-[66px] h-[186px] scale-x-[-1] text-zinc-400 dark:text-zinc-600 opacity-80" />
+      <HomeTopOrnament className="pointer-events-none absolute left-[8%] top-0 hidden md:block w-16 h-46 text-zinc-400 dark:text-zinc-600 opacity-80" />
+      <HomeTopOrnament className="pointer-events-none absolute right-[8%] top-0 hidden md:block w-16 h-46 scale-x-[-1] text-zinc-400 dark:text-zinc-600 opacity-80" />
 
       <div className="relative z-10 flex flex-col items-center">
         {/* Arabic bismillah */}
